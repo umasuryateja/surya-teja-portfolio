@@ -1,0 +1,6 @@
+This is a placeholder for resume.pdf
+
+Replace this file with the actual PDF resume of Jakka Uma Surya Teja.
+The file must be named exactly: resume.pdf
+
+Once replaced, the "Download Resume" button in the Hero and Navbar will serve this file.
