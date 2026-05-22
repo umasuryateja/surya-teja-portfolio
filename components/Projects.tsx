@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Github, ExternalLink, Database, Brain, BarChart3, Workflow } from 'lucide-react'
+import { Github, ExternalLink, Database, Brain, BarChart3, TrendingUp, FileSpreadsheet } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 interface Project {
@@ -63,28 +63,40 @@ const AI_PROJECTS: Project[] = [
 
 const DATA_PROJECTS: Project[] = [
   {
-    id: 'sales-analytics',
+    id: 'customer-behavior-analysis',
     number: '#04',
-    title: 'Sales Analytics Dashboard',
+    title: 'Customer Behavior Analysis',
     description:
-      'An enterprise-grade interactive Power BI dashboard connected to a PostgreSQL data warehouse via optimized SQL ETL pipelines. Provides real-time sales KPIs, regional performance heatmaps, trend forecasting, and executive-level drill-through reporting across product categories and time dimensions.',
-    tech: ['Power BI', 'PostgreSQL', 'SQL', 'Python', 'ETL', 'Pandas'],
-    github: 'https://github.com/umasuryateja',
+      'Analyzed customer purchasing patterns using Python, SQL, and Power BI to identify trends, customer segments, and business KPIs. Covers full-cycle data work: cleaning, EDA, segmentation, and an executive Power BI dashboard with actionable business insights.',
+    tech: ['Python', 'SQL', 'Power BI', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/umasuryateja/customer_behavior_analysis',
     demo: '#',
     icon: <BarChart3 size={28} className="text-green-400" />,
     gradient: 'from-green-500/20 to-teal-500/10',
   },
   {
-    id: 'etl-pipeline',
+    id: 'zepto-sql-analysis',
     number: '#05',
-    title: 'ETL Pipeline Automation',
+    title: 'Zepto SQL Data Analysis',
     description:
-      'A fully automated, fault-tolerant ETL framework built with Python and Pandas that orchestrates data ingestion from heterogeneous sources (REST APIs, CSV, databases) into a normalized PostgreSQL schema. Features incremental loading, data quality validation, error alerting, and scheduling via cron.',
-    tech: ['Python', 'PostgreSQL', 'Pandas', 'SQLAlchemy', 'Docker', 'Cron'],
-    github: 'https://github.com/umasuryateja',
+      'Performed SQL-based inventory and pricing analysis on real-world e-commerce data to generate revenue and stock insights. Includes 20+ analytical SQL queries covering inventory analysis, discount breakdowns, revenue insights, and data validation.',
+    tech: ['PostgreSQL', 'SQL', 'Data Cleaning', 'BI Reporting'],
+    github: 'https://github.com/umasuryateja/Zepto_SQL_Data_Analysis_Project',
     demo: '#',
-    icon: <Workflow size={28} className="text-yellow-400" />,
+    icon: <Database size={28} className="text-yellow-400" />,
     gradient: 'from-yellow-500/20 to-amber-500/10',
+  },
+  {
+    id: 'ecommerce-sales-dashboard',
+    number: '#06',
+    title: 'Ecommerce Sales Dashboard',
+    description:
+      'Built an interactive Excel dashboard for e-commerce sales reporting, category analysis, and performance tracking. Features dynamic slicers, pivot tables, KPI cards, and sales trend charts to deliver clear business reporting for stakeholders.',
+    tech: ['Excel', 'Pivot Tables', 'Charts', 'Slicers', 'KPI Reporting'],
+    github: 'https://github.com/umasuryateja/Ecommerce-Sales-Dashboard-Excel',
+    demo: '#',
+    icon: <FileSpreadsheet size={28} className="text-emerald-400" />,
+    gradient: 'from-emerald-500/20 to-green-500/10',
   },
 ]
 
