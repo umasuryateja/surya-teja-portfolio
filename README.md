@@ -134,7 +134,7 @@ To enable real email sending, integrate [Formspree](https://formspree.io) or [Re
 - Update `handleSubmit` in `Contact.tsx` to `fetch` the endpoint
 
 ### OG Image
-Replace `public/og-image.png` (1200×630px) for social media previews.
+Replace `public/og-image.png` (1200×630px) for social media previews
 
 ---
 
