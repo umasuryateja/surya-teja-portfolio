@@ -228,7 +228,7 @@ export default function Projects() {
   const ref = useRef<HTMLElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
-  const projects = activeTab === 'ai' ? AI_PROJECTS : activeTab === 'data' ? DATA_PROJECTS : AI_FULLSTACK_PROJECTS
+  const projects = activeTab === 'ai' ? AI_PROJECTS : activeTab === 'ai-fullstack' ? AI_FULLSTACK_PROJECTS : DATA_PROJECTS
 
   return (
     <section id="projects" ref={ref} className="py-24 relative" aria-label="Projects section">
@@ -249,7 +249,7 @@ export default function Projects() {
           aria-label="Project categories"
         >
           <div className="flex gap-1 p-1 rounded-xl bg-surface border border-[rgba(34,211,238,0.12)]">
-            {(['ai', 'data', 'ai-fullstack'] as const).map((tab) => (
+            {(['ai', 'ai-fullstack', 'data'] as const).map((tab) => (
               <button
                 key={tab}
                 role="tab"
