@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Github, ExternalLink, Database, Brain, BarChart3, TrendingUp, FileSpreadsheet } from 'lucide-react'
+import { Github, ExternalLink, Database, Brain, BarChart3, TrendingUp, FileSpreadsheet, Layers } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 interface Project {
@@ -35,22 +35,22 @@ const AI_PROJECTS: Project[] = [
     number: '#02',
     title: 'ResumeAI Pro',
     description:
-      'An intelligent ATS resume analyzer that leverages multi-domain NLP classifiers and a dynamic scoring engine to evaluate resumes against job descriptions. Provides granular feedback on keyword density, semantic alignment, and formatting quality — helping candidates optimize for real-world ATS systems.',
-    tech: ['Python', 'NLP', 'BERT', 'TF-IDF', 'scikit-learn', 'Streamlit'],
-    github: 'https://github.com/umasuryateja',
-    demo: '#',
+      'AI-powered ATS Resume Analyzer that performs resume parsing, ATS scoring, semantic skill matching, job-role prediction, and personalized optimization recommendations using NLP and Machine Learning.',
+    tech: ['Python', 'Streamlit', 'NLP', 'Machine Learning', 'TF-IDF', 'Naive Bayes', 'Pandas', 'Plotly', 'PDF Processing'],
+    github: 'https://github.com/umasuryateja/Resume_AI_Pro',
+    demo: 'https://resume-ai-pro-d0by.onrender.com/',
     icon: <Brain size={28} className="text-purple-400" />,
     gradient: 'from-purple-500/20 to-pink-500/10',
   },
   {
     id: 'misinfo-detector',
     number: '#03',
-    title: 'Hybrid Misinformation Detector',
+    title: 'Hybrid Deep Learning System for Misinformation Detection',
     description:
-      'A cutting-edge hybrid deep learning system combining BERT contextual embeddings, CNN local feature extraction, and LSTM sequence modeling for multi-label misinformation classification. Achieves high accuracy on social media text by fusing complementary architectures into a unified prediction pipeline.',
-    tech: ['BERT', 'CNN', 'LSTM', 'PyTorch', 'HuggingFace', 'Python'],
-    github: 'https://github.com/umasuryateja',
-    demo: '#',
+      'Multi-modal deep learning system combining BERT, CNN, and LSTM architectures for real-time misinformation detection across text and image content.',
+    tech: ['Python', 'TensorFlow', 'BERT', 'CNN', 'LSTM', 'OpenCV', 'NLP', 'Deep Learning'],
+    github: 'https://github.com/umasuryateja/-Hybrid-Deep-Learning-Based-System-for-Real-Time-Misinformation-and-Crime-Detection-',
+    demo: 'https://github.com/umasuryateja/-Hybrid-Deep-Learning-Based-System-for-Real-Time-Misinformation-and-Crime-Detection-',
     icon: (
       <svg viewBox="0 0 28 28" width="28" height="28" fill="none" className="text-red-400">
         <path d="M14 3L2 24h24L14 3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
@@ -58,6 +58,34 @@ const AI_PROJECTS: Project[] = [
       </svg>
     ),
     gradient: 'from-red-500/20 to-orange-500/10',
+  },
+]
+
+const AI_FULLSTACK_PROJECTS: Project[] = [
+  {
+    id: 'projectpulse-ai',
+    number: '#07',
+    title: 'ProjectPulse AI',
+    description:
+      'AI-powered full-stack enterprise project management platform featuring project health scoring, risk analysis, stakeholder management, milestone tracking, AI-generated reports, and real-time project insights using Gemini AI.',
+    tech: [
+      'React.js',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS',
+      'Node.js',
+      'Express.js',
+      'PostgreSQL',
+      'Supabase',
+      'Gemini AI',
+      'REST APIs',
+      'Render',
+      'Vercel',
+    ],
+    github: 'https://github.com/umasuryateja/pmo_cockpit_pro',
+    demo: 'https://pmo-cockpit-pro.vercel.app/',
+    icon: <Layers size={28} className="text-cyan-400" />,
+    gradient: 'from-cyan-500/20 to-blue-500/10',
   },
 ]
 
@@ -196,11 +224,11 @@ function ProjectCard({ project }: { project: Project }) {
  * 2-column grid on desktop.
  */
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState<'ai' | 'data'>('ai')
+  const [activeTab, setActiveTab] = useState<'ai' | 'data' | 'ai-fullstack'>('ai')
   const ref = useRef<HTMLElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
-  const projects = activeTab === 'ai' ? AI_PROJECTS : DATA_PROJECTS
+  const projects = activeTab === 'ai' ? AI_PROJECTS : activeTab === 'data' ? DATA_PROJECTS : AI_FULLSTACK_PROJECTS
 
   return (
     <section id="projects" ref={ref} className="py-24 relative" aria-label="Projects section">
@@ -221,7 +249,7 @@ export default function Projects() {
           aria-label="Project categories"
         >
           <div className="flex gap-1 p-1 rounded-xl bg-surface border border-[rgba(34,211,238,0.12)]">
-            {(['ai', 'data'] as const).map((tab) => (
+            {(['ai', 'data', 'ai-fullstack'] as const).map((tab) => (
               <button
                 key={tab}
                 role="tab"
@@ -233,7 +261,11 @@ export default function Projects() {
                     : 'text-text-muted hover:text-text-primary'
                 }`}
               >
-                {tab === 'ai' ? '🤖 AI/ML Projects' : '📊 Data & Analytics'}
+                {tab === 'ai'
+                  ? '🤖 AI Projects'
+                  : tab === 'data'
+                  ? '📊 Data Projects'
+                  : '🌐 AI Full Stack Projects'}
               </button>
             ))}
           </div>
@@ -243,7 +275,13 @@ export default function Projects() {
         <div
           className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6"
           role="tabpanel"
-          aria-label={activeTab === 'ai' ? 'AI/ML Projects' : 'Data & Analytics Projects'}
+          aria-label={
+            activeTab === 'ai'
+              ? 'AI Projects'
+              : activeTab === 'data'
+              ? 'Data Projects'
+              : 'AI Full Stack Projects'
+          }
         >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
