@@ -11,7 +11,7 @@ const PHOTO_STATS = [
   { icon: BrainCircuit, value: '3+', label: 'AI Projects',      color: 'text-accent',     bg: 'rgba(34,211,238,0.12)',  border: 'rgba(34,211,238,0.3)' },
   { icon: Database,     value: '2+', label: 'Data Projects',    color: 'text-cyan-300',   bg: 'rgba(103,232,249,0.10)', border: 'rgba(103,232,249,0.25)' },
   { icon: Briefcase,    value: '1',  label: 'Internship',       color: 'text-blue-400',   bg: 'rgba(96,165,250,0.12)',  border: 'rgba(96,165,250,0.25)' },
-  { icon: Award,        value: '6+',  label: 'Certifications',   color: 'text-purple-400', bg: 'rgba(192,132,252,0.12)', border: 'rgba(192,132,252,0.25)' },
+  { icon: Award,        value: '5+',  label: 'Certifications',   color: 'text-purple-400', bg: 'rgba(192,132,252,0.12)', border: 'rgba(192,132,252,0.25)' },
 ]
 
 const fadeUp = (delay = 0) => ({
