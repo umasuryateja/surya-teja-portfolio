@@ -5,6 +5,15 @@ import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { Award, ExternalLink, Github, Linkedin } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 
+const MicrosoftIcon = ({ size = 16, className }: { size?: number; className?: string }) => (
+  <svg viewBox="0 0 23 23" width={size} height={size} fill="currentColor" className={className}>
+    <rect x="0" y="0" width="10.5" height="10.5" />
+    <rect x="11.5" y="0" width="10.5" height="10.5" />
+    <rect x="0" y="11.5" width="10.5" height="10.5" />
+    <rect x="11.5" y="11.5" width="10.5" height="10.5" />
+  </svg>
+)
+
 interface Cert {
   id: string
   name: string
@@ -16,7 +25,7 @@ interface Cert {
   duration?: string
   skills?: string[]
   description?: string
-  customIcons?: boolean
+  customIconType?: 'github' | 'microsoft'
 }
 
 const CERTS: Cert[] = [
@@ -76,9 +85,30 @@ const CERTS: Cert[] = [
     ],
     description:
       'Completed the Career Essentials in GitHub Professional Certificate learning path, gaining practical experience with GitHub workflows, collaboration, automation, repository management, GitHub Actions, Copilot, and Code Search.',
-    customIcons: true,
+    customIconType: 'github',
+  },
+  {
+    id: 'generative-ai',
+    name: 'Career Essentials in Generative AI',
+    issuer: 'Microsoft × LinkedIn Learning',
+    year: 'December 2024',
+    badge: '🤖',
+    link: '/generative-ai-certificate.png',
+    color: 'from-blue-500/20 to-indigo-500/10',
+    duration: '4 Hours 51 Minutes',
+    skills: [
+      'Generative AI',
+      'Artificial Intelligence',
+      'AI Ethics',
+      'Prompt Engineering',
+      'Responsible AI',
+    ],
+    description:
+      'Completed the Career Essentials in Generative AI learning path by Microsoft and LinkedIn Learning, covering Generative AI fundamentals, AI ethics, responsible AI practices, and practical applications of modern AI technologies.',
+    customIconType: 'microsoft',
   },
 ]
+
 
 
 /**
@@ -112,9 +142,7 @@ export default function Certifications() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               whileHover={shouldReduce ? {} : { scale: 1.02, y: -3 }}
-              className={`glass-card p-6 flex items-start gap-5 relative overflow-hidden group cursor-default ${
-                cert.id === 'github-essentials' ? 'sm:col-span-2' : 'col-span-1'
-              }`}
+              className="glass-card p-6 flex items-start gap-5 relative overflow-hidden group cursor-default"
               aria-label={`Certificate: ${cert.name} from ${cert.issuer}`}
             >
               {/* Shimmer overlay on hover */}
@@ -136,11 +164,17 @@ export default function Certifications() {
                   boxShadow: '0 0 20px rgba(34,211,238,0.1)',
                 }}
               >
-                {cert.customIcons ? (
+                {cert.customIconType === 'github' ? (
                   <div className="flex items-center gap-1 text-accent select-none" role="img" aria-hidden="true">
                     <Linkedin size={16} />
                     <span className="text-xs text-text-muted/60 font-semibold">×</span>
                     <Github size={16} />
+                  </div>
+                ) : cert.customIconType === 'microsoft' ? (
+                  <div className="flex items-center gap-1 text-accent select-none" role="img" aria-hidden="true">
+                    <Linkedin size={16} />
+                    <span className="text-xs text-text-muted/60 font-semibold">×</span>
+                    <MicrosoftIcon size={16} />
                   </div>
                 ) : (
                   <span className="text-2xl select-none" role="img" aria-hidden="true">
@@ -194,6 +228,21 @@ export default function Certifications() {
                         {skill}
                       </span>
                     ))}
+                  </div>
+                )}
+
+                {cert.description && (
+                  <div className="mt-4 pt-1">
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 text-text-muted text-xs font-semibold hover:bg-white/5 hover:text-text-primary hover:border-white/20 transition-all duration-200 focus-visible:outline-accent"
+                      aria-label={`View ${cert.name} certificate`}
+                    >
+                      <ExternalLink size={13} />
+                      View Certificate
+                    </a>
                   </div>
                 )}
               </div>
