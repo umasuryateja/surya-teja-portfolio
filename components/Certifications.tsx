@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
-import { Award, ExternalLink } from 'lucide-react'
+import { Award, ExternalLink, Github, Linkedin } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 interface Cert {
@@ -13,6 +13,10 @@ interface Cert {
   badge: string
   link: string
   color: string
+  duration?: string
+  skills?: string[]
+  description?: string
+  customIcons?: boolean
 }
 
 const CERTS: Cert[] = [
@@ -52,7 +56,30 @@ const CERTS: Cert[] = [
     link: '#',
     color: 'from-orange-500/20 to-yellow-500/10',
   },
+  {
+    id: 'github-essentials',
+    name: 'Career Essentials in GitHub Professional Certificate',
+    issuer: 'LinkedIn Learning × GitHub',
+    year: 'July 2026',
+    badge: '🐙',
+    link: '/github-certificate.pdf',
+    color: 'from-slate-500/20 to-zinc-500/10',
+    duration: '4 Hours 20 Minutes',
+    skills: [
+      'GitHub',
+      'Version Control',
+      'Repository Management',
+      'GitHub Actions',
+      'GitHub Copilot',
+      'Project Collaboration',
+      'Code Search',
+    ],
+    description:
+      'Completed the Career Essentials in GitHub Professional Certificate learning path, gaining practical experience with GitHub workflows, collaboration, automation, repository management, GitHub Actions, Copilot, and Code Search.',
+    customIcons: true,
+  },
 ]
+
 
 /**
  * Certifications Section — 2×2 card grid.
@@ -85,7 +112,9 @@ export default function Certifications() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               whileHover={shouldReduce ? {} : { scale: 1.02, y: -3 }}
-              className="glass-card p-6 flex items-start gap-5 relative overflow-hidden group cursor-default"
+              className={`glass-card p-6 flex items-start gap-5 relative overflow-hidden group cursor-default ${
+                cert.id === 'github-essentials' ? 'sm:col-span-2' : 'col-span-1'
+              }`}
               aria-label={`Certificate: ${cert.name} from ${cert.issuer}`}
             >
               {/* Shimmer overlay on hover */}
@@ -107,13 +136,21 @@ export default function Certifications() {
                   boxShadow: '0 0 20px rgba(34,211,238,0.1)',
                 }}
               >
-                <span className="text-2xl select-none" role="img" aria-hidden="true">
-                  {cert.badge}
-                </span>
+                {cert.customIcons ? (
+                  <div className="flex items-center gap-1 text-accent select-none" role="img" aria-hidden="true">
+                    <Linkedin size={16} />
+                    <span className="text-xs text-text-muted/60 font-semibold">×</span>
+                    <Github size={16} />
+                  </div>
+                ) : (
+                  <span className="text-2xl select-none" role="img" aria-hidden="true">
+                    {cert.badge}
+                  </span>
+                )}
               </div>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col gap-1.5 min-w-0">
+              <div className="relative z-10 flex flex-col gap-1.5 min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="text-base font-semibold text-text-primary leading-snug">
                     {cert.name}
@@ -129,13 +166,36 @@ export default function Certifications() {
                   </a>
                 </div>
                 <p className="text-accent text-xs font-semibold truncate">{cert.issuer}</p>
-                <div className="flex items-center gap-2 mt-1">
-                  <Award size={12} className="text-text-muted" aria-hidden="true" />
-                  <span className="text-text-muted text-xs font-mono">{cert.year}</span>
-                  <span className="ml-1 px-2 py-0.5 rounded-full bg-green-400/10 border border-green-400/25 text-green-400 text-xs font-medium">
+                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-1">
+                  <div className="flex items-center gap-1">
+                    <Award size={12} className="text-text-muted" aria-hidden="true" />
+                    <span className="text-text-muted text-xs font-mono">{cert.year}</span>
+                  </div>
+                  {cert.duration && (
+                    <span className="text-text-muted text-xs font-mono">
+                      • {cert.duration}
+                    </span>
+                  )}
+                  <span className="px-2 py-0.5 rounded-full bg-green-400/10 border border-green-400/25 text-green-400 text-[10px] font-medium">
                     Verified
                   </span>
                 </div>
+
+                {cert.description && (
+                  <p className="text-text-muted text-xs mt-2.5 leading-relaxed">
+                    {cert.description}
+                  </p>
+                )}
+
+                {cert.skills && cert.skills.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-3.5">
+                    {cert.skills.map((skill) => (
+                      <span key={skill} className="tech-badge text-[10px] px-2 py-0.5">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}
