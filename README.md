@@ -131,7 +131,7 @@ Replace `public/resume.pdf` with your actual PDF file.
 ### Contact form
 To enable real email sending, integrate [Formspree](https://formspree.io) or [Resend](https://resend.com):
 - Set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in `.env.local`
-- Update `handleSubmit` in `Contact.tsx` to `fetch` the endpoint
+- Update `handleSubmit` in `Contact.tsx` to `fetch` the endpoint.
 
 ### OG Image
 Replace `public/og-image.png` (1200×630px) for social media previews
