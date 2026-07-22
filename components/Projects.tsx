@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Github, ExternalLink, Database, Brain, BarChart3, TrendingUp, FileSpreadsheet, Layers } from 'lucide-react'
+import { Github, ExternalLink, Database, Brain, BarChart3, FileSpreadsheet, Layers, FileText } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 interface Project {
@@ -19,15 +19,28 @@ interface Project {
 
 const AI_PROJECTS: Project[] = [
   {
-    id: 'ai-db-assistant',
+    id: 'claimpilot-ai',
     number: '#01',
-    title: 'AI Database Assistant',
+    title: 'ClaimPilot AI',
     description:
-      'A production-grade RAG-powered assistant that converts natural language questions into optimized SQL queries. Combines LangChain document retrieval, ChromaDB vector storage, and an OpenAI LLM backend to enable non-technical users to query complex relational databases through a conversational interface.',
-    tech: ['LangChain', 'ChromaDB', 'OpenAI', 'FastAPI', 'PostgreSQL', 'RAG'],
-    github: 'https://github.com/umasuryateja',
-    demo: '#',
-    icon: <Database size={28} className="text-accent" />,
+      'An AI-powered insurance claims automation platform that extracts structured data from uploaded claim documents using OCR and Gemini AI, validates information with Pydantic schemas, intelligently routes claims using a rule engine, and generates structured JSON outputs through an interactive Streamlit interface.',
+    tech: [
+      'Python',
+      'Google Gemini API',
+      'Streamlit',
+      'OCR',
+      'Pydantic',
+      'Document AI',
+      'Prompt Engineering',
+      'Rule Engine',
+      'JSON Extraction',
+      'PDF Processing',
+      'GitHub',
+      'Render',
+    ],
+    github: 'https://github.com/umasuryateja/ClaimPilot-AI',
+    demo: 'https://claimpilot-ai-ylrl.onrender.com/',
+    icon: <FileText size={28} className="text-accent" />,
     gradient: 'from-cyan-500/20 to-blue-500/10',
   },
   {
