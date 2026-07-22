@@ -107,6 +107,44 @@ const CERTS: Cert[] = [
       'Completed the Career Essentials in Generative AI learning path by Microsoft and LinkedIn Learning, covering Generative AI fundamentals, AI ethics, responsible AI practices, and practical applications of modern AI technologies.',
     customIconType: 'microsoft',
   },
+  {
+    id: 'microsoft-power-bi-pl300',
+    name: 'Microsoft Power BI Data Analyst Associate (PL-300) Cert Prep',
+    issuer: 'Microsoft Press × LinkedIn Learning',
+    year: 'July 2026',
+    badge: '📊',
+    link: 'https://www.linkedin.com/learning/certificates/19918ee095faaac31f3a8f112b4ece5bdad6b7a43eb7047096cba886e1889e2a',
+    color: 'from-blue-500/20 to-indigo-500/10',
+    skills: [
+      'Power BI',
+      'Data Analysis',
+      'Data Visualization',
+      'DAX',
+      'Business Intelligence',
+      'Data Modeling',
+    ],
+    description:
+      'Prepared for the PL-300 Microsoft Power BI Data Analyst certification, mastering data preparation, modeling, visualization, analysis, and deploying assets in Power BI.',
+    customIconType: 'microsoft',
+  },
+  {
+    id: 'claude-code-in-action',
+    name: 'Claude Code in Action',
+    issuer: 'Anthropic × LinkedIn Learning',
+    year: 'July 2026',
+    badge: '🤖',
+    link: 'https://www.linkedin.com/learning/certificates/e44a28dff59d41d9d98a99dec47d285aee88e8b3ead8f420cd69afa38c75bd0b',
+    color: 'from-amber-600/20 to-orange-500/10',
+    skills: [
+      'Claude Code',
+      'AI Coding Assistants',
+      'Anthropic Claude',
+      'Prompt Engineering',
+      'Software Development',
+    ],
+    description:
+      'Mastered using Anthropic\'s Claude Code CLI for developer workflows, codebase context understanding, prompt customization, and automated coding tasks.',
+  },
 ]
 
 
