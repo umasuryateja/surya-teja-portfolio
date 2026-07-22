@@ -56,28 +56,8 @@ const AI_PROJECTS: Project[] = [
     gradient: 'from-purple-500/20 to-pink-500/10',
   },
   {
-    id: 'misinfo-detector',
-    number: '#03',
-    title: 'Hybrid Deep Learning System for Misinformation Detection',
-    description:
-      'Multi-modal deep learning system combining BERT, CNN, and LSTM architectures for real-time misinformation detection across text and image content.',
-    tech: ['Python', 'TensorFlow', 'BERT', 'CNN', 'LSTM', 'OpenCV', 'NLP', 'Deep Learning'],
-    github: 'https://github.com/umasuryateja/-Hybrid-Deep-Learning-Based-System-for-Real-Time-Misinformation-and-Crime-Detection-',
-    demo: 'https://github.com/umasuryateja/-Hybrid-Deep-Learning-Based-System-for-Real-Time-Misinformation-and-Crime-Detection-',
-    icon: (
-      <svg viewBox="0 0 28 28" width="28" height="28" fill="none" className="text-red-400">
-        <path d="M14 3L2 24h24L14 3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M14 11v5M14 19v1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
-    gradient: 'from-red-500/20 to-orange-500/10',
-  },
-]
-
-const AI_FULLSTACK_PROJECTS: Project[] = [
-  {
     id: 'projectpulse-ai',
-    number: '#07',
+    number: '#03',
     title: 'ProjectPulse AI',
     description:
       'AI-powered full-stack enterprise project management platform featuring project health scoring, risk analysis, stakeholder management, milestone tracking, AI-generated reports, and real-time project insights using Gemini AI.',
@@ -100,12 +80,29 @@ const AI_FULLSTACK_PROJECTS: Project[] = [
     icon: <Layers size={28} className="text-cyan-400" />,
     gradient: 'from-cyan-500/20 to-blue-500/10',
   },
+  {
+    id: 'misinfo-detector',
+    number: '#04',
+    title: 'Hybrid Deep Learning System for Misinformation Detection',
+    description:
+      'Multi-modal deep learning system combining BERT, CNN, and LSTM architectures for real-time misinformation detection across text and image content.',
+    tech: ['Python', 'TensorFlow', 'BERT', 'CNN', 'LSTM', 'OpenCV', 'NLP', 'Deep Learning'],
+    github: 'https://github.com/umasuryateja/-Hybrid-Deep-Learning-Based-System-for-Real-Time-Misinformation-and-Crime-Detection-',
+    demo: 'https://github.com/umasuryateja/-Hybrid-Deep-Learning-Based-System-for-Real-Time-Misinformation-and-Crime-Detection-',
+    icon: (
+      <svg viewBox="0 0 28 28" width="28" height="28" fill="none" className="text-red-400">
+        <path d="M14 3L2 24h24L14 3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M14 11v5M14 19v1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    gradient: 'from-red-500/20 to-orange-500/10',
+  },
 ]
 
 const DATA_PROJECTS: Project[] = [
   {
     id: 'customer-behavior-analysis',
-    number: '#04',
+    number: '#05',
     title: 'Customer Behavior Analysis',
     description:
       'Analyzed customer purchasing patterns using Python, SQL, and Power BI to identify trends, customer segments, and business KPIs. Covers full-cycle data work: cleaning, EDA, segmentation, and an executive Power BI dashboard with actionable business insights.',
@@ -117,7 +114,7 @@ const DATA_PROJECTS: Project[] = [
   },
   {
     id: 'zepto-sql-analysis',
-    number: '#05',
+    number: '#06',
     title: 'Zepto SQL Data Analysis',
     description:
       'Performed SQL-based inventory and pricing analysis on real-world e-commerce data to generate revenue and stock insights. Includes 20+ analytical SQL queries covering inventory analysis, discount breakdowns, revenue insights, and data validation.',
@@ -129,7 +126,7 @@ const DATA_PROJECTS: Project[] = [
   },
   {
     id: 'ecommerce-sales-dashboard',
-    number: '#06',
+    number: '#07',
     title: 'Ecommerce Sales Dashboard',
     description:
       'Built an interactive Excel dashboard for e-commerce sales reporting, category analysis, and performance tracking. Features dynamic slicers, pivot tables, KPI cards, and sales trend charts to deliver clear business reporting for stakeholders.',
@@ -237,11 +234,11 @@ function ProjectCard({ project }: { project: Project }) {
  * 2-column grid on desktop.
  */
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState<'ai' | 'data' | 'ai-fullstack'>('ai')
+  const [activeTab, setActiveTab] = useState<'ai' | 'data'>('ai')
   const ref = useRef<HTMLElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
-  const projects = activeTab === 'ai' ? AI_PROJECTS : activeTab === 'ai-fullstack' ? AI_FULLSTACK_PROJECTS : DATA_PROJECTS
+  const projects = activeTab === 'ai' ? AI_PROJECTS : DATA_PROJECTS
 
   return (
     <section id="projects" ref={ref} className="py-24 relative" aria-label="Projects section">
@@ -262,7 +259,7 @@ export default function Projects() {
           aria-label="Project categories"
         >
           <div className="flex gap-1 p-1 rounded-xl bg-surface border border-[rgba(34,211,238,0.12)]">
-            {(['ai', 'ai-fullstack', 'data'] as const).map((tab) => (
+            {(['ai', 'data'] as const).map((tab) => (
               <button
                 key={tab}
                 role="tab"
@@ -274,11 +271,7 @@ export default function Projects() {
                     : 'text-text-muted hover:text-text-primary'
                 }`}
               >
-                {tab === 'ai'
-                  ? '🤖 AI Projects'
-                  : tab === 'data'
-                  ? '📊 Data Projects'
-                  : '🌐 AI Full Stack Projects'}
+                {tab === 'ai' ? '🤖 AI Projects' : '📊 Data Projects'}
               </button>
             ))}
           </div>
@@ -288,13 +281,7 @@ export default function Projects() {
         <div
           className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6"
           role="tabpanel"
-          aria-label={
-            activeTab === 'ai'
-              ? 'AI Projects'
-              : activeTab === 'data'
-              ? 'Data Projects'
-              : 'AI Full Stack Projects'
-          }
+          aria-label={activeTab === 'ai' ? 'AI Projects' : 'Data Projects'}
         >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
