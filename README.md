@@ -1,6 +1,6 @@
 # Jakka Uma Surya Teja — Portfolio
 
-A production-grade AI/ML engineer portfolio built with **Next.js 14 (App Router)**, **Tailwind CSS v3**, and **Framer Motion v11**.
+A production-grade AI/ML engineer portfolio built with **Next.js 14 (App Router)**, **Tailwind CSS v3**, and **Framer Motion v11**
 
 ## ✨ Features
 
