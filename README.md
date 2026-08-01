@@ -14,7 +14,7 @@ A production-grade AI/ML engineer portfolio built with **Next.js 14 (App Router)
 - 🔝 Back-to-top button + sticky frosted glass navbar
 - ♿ Fully accessible: ARIA labels, keyboard nav, `prefers-reduced-motion`
 - 📱 Responsive 320px–2560px
-- 🔒 Vercel security headers (CSP, X-Frame-Options)
+- 🔒 Vercel security headers (CSP, X-Frame-Options).
 
 ---
 
